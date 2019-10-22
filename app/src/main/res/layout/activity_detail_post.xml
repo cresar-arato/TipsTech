@@ -12,13 +12,13 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="220dp"
-            android:id="@+id/image_view"
+            android:id="@+id/image_det_view"
             android:src="@drawable/google_photos"
             android:scaleType="centerCrop" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/img_title"
+            android:id="@+id/img_det_title"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
@@ -28,7 +28,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/img_description"
+            android:id="@+id/img_det_description"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="10dp"
             android:text="Image Description"

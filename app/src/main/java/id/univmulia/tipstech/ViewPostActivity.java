@@ -64,4 +64,8 @@ public class ViewPostActivity extends AppCompatActivity {
             }
         });
     }
+    //kalo rusak hapus
+    public void userItemClick(int adapterPosition) {
+        Toast.makeText(ViewPostActivity.this, "Clicked User : " + mUploads.get(adapterPosition).getImgTitle(), Toast.LENGTH_SHORT).show();
+    }
 }

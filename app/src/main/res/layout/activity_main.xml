@@ -14,7 +14,7 @@
         android:text="Please Upload Image"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
         android:textSize="24sp" />
 
 
@@ -51,7 +51,7 @@
         android:layout_below="@+id/chooseImage"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:hint="Enter Image Description here" />
+        android:hint="Enter Image Title here" />
 
     <EditText
         android:id="@+id/imgDescription"
