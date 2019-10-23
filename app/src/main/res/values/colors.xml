@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#673AB7</color>
-    <color name="colorPrimaryDark">#673AB7</color>
-    <color name="colorNavBar">#673AB7</color>
-    <color name="colorAccent">#200B4D</color>
+    <color name="colorPrimary">#EF8129</color>
+    <color name="colorPrimaryDark">#EF8129</color>
+    <color name="colorAccent">#A85213</color>
+    <color name="colorNavBar">#EF8129</color>
+
+    <!--color untuk gradient transition-->
+    <color name="purple">#6E1A7E</color>
+    <color name="deep_purple">#410F49</color>
+    <color name="deep_blue">#3f51b5</color>
+    <color name="blue">#2196f3</color>
+    <color name="grey">#333333</color>
+    <color name="deep_gray">#222222</color>
 </resources>

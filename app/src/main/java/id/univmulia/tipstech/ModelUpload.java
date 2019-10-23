@@ -1,14 +1,15 @@
 package id.univmulia.tipstech;
 
-public class Upload {
+public class ModelUpload {
     private String imgTitle;
     private String imgDesc;
     private String imgUrl;
+    private String key;
 
-    public Upload() {
+    public ModelUpload() {
     }
 
-    public Upload(String imgTitle,String imgDesc, String imgUrl) {
+    public ModelUpload(String imgTitle, String imgDesc, String imgUrl) {
         if(imgTitle.trim().equals("") || imgDesc.trim().equals(""))
         {
             imgTitle="Please Fill Text Below";
@@ -16,6 +17,14 @@ public class Upload {
         this.imgTitle = imgTitle;
         this.imgDesc = imgDesc;
         this.imgUrl = imgUrl;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getImgTitle() {

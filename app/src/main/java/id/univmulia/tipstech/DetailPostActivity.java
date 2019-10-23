@@ -6,7 +6,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -23,7 +22,7 @@ public class DetailPostActivity extends AppCompatActivity {
         tvtitle = findViewById(R.id.imgTitle);
         tvdescription = findViewById(R.id.imgDescription);
 
-        Upload post = (Upload) getIntent().getSerializableExtra("data");
+        ModelUpload post = (ModelUpload) getIntent().getSerializableExtra("data");
         if(post!=null){
             det_view.setImageURI(Uri.parse(post.getImgUrl()));
             tvtitle.setText(post.getImgTitle());

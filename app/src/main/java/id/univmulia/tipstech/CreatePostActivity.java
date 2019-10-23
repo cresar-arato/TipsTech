@@ -29,7 +29,7 @@ import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-public class MainActivity extends AppCompatActivity {
+public class CreatePostActivity extends AppCompatActivity {
 
     private static final int CHOOSE_IMAGE = 1;
 
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_create_post);
 
         uploadProgress = findViewById(R.id.uploadProgress);
         chooseImage = findViewById(R.id.chooseImage);
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         viewGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ViewPostActivity.class);
+                Intent intent = new Intent(CreatePostActivity.this, ViewPostActivity.class);
                 startActivity(intent);
             }
         });
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (mUploadTask != null && mUploadTask.isInProgress()) {
-                    Toast.makeText(MainActivity.this, "Upload in progress", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CreatePostActivity.this, "ModelUpload in progress", Toast.LENGTH_LONG).show();
                 } else {
                     uploadImage();
                 }
@@ -133,10 +133,10 @@ public class MainActivity extends AppCompatActivity {
                             fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-                                    Upload upload = new Upload(imgTitle.getText().toString().trim(), imgDescription.getText().toString().trim(), uri.toString());
+                                    ModelUpload modelUpload = new ModelUpload(imgTitle.getText().toString().trim(), imgDescription.getText().toString().trim(), uri.toString());
                                     String uploadID = mDatabaseRef.push().getKey();
-                                    mDatabaseRef.child(uploadID).setValue(upload);
-                                    Toast.makeText(MainActivity.this, "Upload successfully", Toast.LENGTH_LONG).show();
+                                    mDatabaseRef.child(uploadID).setValue(modelUpload);
+                                    Toast.makeText(CreatePostActivity.this, "ModelUpload successfully", Toast.LENGTH_LONG).show();
                                     imgPreview.setImageResource(R.drawable.google_photos);
                                     imgTitle.setText("");
                                     imgDescription.setText("");
@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(CreatePostActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
         } else {
-            Toast.makeText(MainActivity.this, "No file selected", Toast.LENGTH_SHORT).show();
+            Toast.makeText(CreatePostActivity.this, "No file selected", Toast.LENGTH_SHORT).show();
         }
     }
 }

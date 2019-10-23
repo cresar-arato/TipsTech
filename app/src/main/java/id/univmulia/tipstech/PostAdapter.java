@@ -1,21 +1,17 @@
 package id.univmulia.tipstech;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
-import java.io.Serializable;
 import java.util.List;
 
 import static android.media.CamcorderProfile.get;
@@ -23,12 +19,12 @@ import static android.media.CamcorderProfile.get;
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolder>{
 
     private Context mContext;
-    private List<Upload> mUploads;
+    private List<ModelUpload> mModelUploads;
 
-    public PostAdapter(Context context, List<Upload> uploads)
+    public PostAdapter(Context context, List<ModelUpload> modelUploads)
     {
         mContext=context;
-        mUploads=uploads;
+        mModelUploads = modelUploads;
     }
 
     @NonNull
@@ -40,12 +36,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder imageViewHolder, int i) {
-        Upload uploadCur=mUploads.get(i);
-        imageViewHolder.img_title.setText(uploadCur.getImgTitle());
-        imageViewHolder.img_description.setText(uploadCur.getImgDesc());
-        imageViewHolder.img_description.setText(uploadCur.getImgDesc());
+        final String title = mModelUploads.get(i).getImgTitle();
+        ModelUpload modelUploadCur = mModelUploads.get(i);
+        imageViewHolder.img_title.setText(modelUploadCur.getImgTitle());
+        imageViewHolder.img_description.setText(modelUploadCur.getImgDesc());
         Picasso.get()
-                .load(uploadCur.getImgUrl())
+                .load(modelUploadCur.getImgUrl())
                 .placeholder(R.drawable.google_photos)
                 .fit()
                 .centerCrop()
@@ -54,7 +50,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
 
     @Override
     public int getItemCount() {
-        return mUploads.size();
+        return mModelUploads.size();
     }
 
     public class ImageViewHolder extends RecyclerView.ViewHolder {

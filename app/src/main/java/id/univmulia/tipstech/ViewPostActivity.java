@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.view.View;
@@ -28,7 +27,7 @@ public class ViewPostActivity extends AppCompatActivity {
     private ProgressBar progressBar;
 
     private DatabaseReference mDatabaseRef;
-    private List<Upload> mUploads;
+    private List<ModelUpload> mModelUploads;
 
 
     @Override
@@ -42,17 +41,17 @@ public class ViewPostActivity extends AppCompatActivity {
 
         progressBar=findViewById(R.id.progress_circular);
 
-        mUploads=new ArrayList<>();
+        mModelUploads =new ArrayList<>();
         mDatabaseRef= FirebaseDatabase.getInstance().getReference("uploads");
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot postSnapshot:dataSnapshot.getChildren())
                 {
-                    Upload upload=postSnapshot.getValue(Upload.class);
-                    mUploads.add(upload);
+                    ModelUpload modelUpload =postSnapshot.getValue(ModelUpload.class);
+                    mModelUploads.add(modelUpload);
                 }
-                mAdapter=new PostAdapter(ViewPostActivity.this, mUploads);
+                mAdapter=new PostAdapter(ViewPostActivity.this, mModelUploads);
                 mRecyclerView.setAdapter(mAdapter);
                 progressBar.setVisibility(View.INVISIBLE);
             }
@@ -63,9 +62,5 @@ public class ViewPostActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.INVISIBLE);
             }
         });
-    }
-    //kalo rusak hapus
-    public void userItemClick(int adapterPosition) {
-        Toast.makeText(ViewPostActivity.this, "Clicked User : " + mUploads.get(adapterPosition).getImgTitle(), Toast.LENGTH_SHORT).show();
     }
 }
